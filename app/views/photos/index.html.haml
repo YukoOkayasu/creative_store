@@ -1,0 +1,27 @@
+.row
+  .header
+    %ul.header__inner
+      .header__menu
+        %i.fa.fa-bars.fa-2x
+      .header__titles Creative Art Store
+      .header__right
+        %a.signin{href: "/"} Sign In
+        / %a.mypage{href: "/"} My Page
+        / %a.bag{href: "/"}
+        /   %i.fa.fa-shopping-cart.fa-2x
+  .main
+    .top-image
+      = image_tag("016ELLY18420_TP_V.jpg", alt: "top-picture", class: "topimage")
+    .ranking
+      :javascript
+        $('.autoplay').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        });
+    .photo
+      .pop
+      .clasicc
+      .modern
+      .search
