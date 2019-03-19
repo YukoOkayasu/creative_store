@@ -1,0 +1,37 @@
+.header
+  %ul.header__inner
+    %li.header__menu
+      .bars
+        %a.fa.fa-bars.fa-2x
+        %ul.menu
+          %li
+            = link_to root_path do
+              %p HOME
+          %li
+            %a NEWS
+          %li
+            %a ABOUT
+          %li.catedory
+            %a CATEGORY
+            %ul.menu-category
+              %li
+                %a POP
+              %li
+                %a CLASSICAL
+              %li
+                %a MODERN
+    %li.header__search
+      = form_tag('/products/search', method: :get, class: "search-form") do
+        %input.input-search{name: "keyword", placeholder: "キーワードから探す", type: "text", value: ""}
+          %button.btn-search{title: "検索", type: "submit"}
+            %i.fa.fa-search.fa-2x
+    %li.header__titles Creative Art Store
+    %li.header__right
+      - if user_signed_in?
+        %a.bag{href: "/"}
+          %i.fa.fa-shopping-cart.fa-2x
+        %a.mypage
+          = link_to "My Page", user_path(current_user.id), method: :GET
+      - else
+        %a.signin
+          = link_to "Sign In", new_user_session_path, method: :GET

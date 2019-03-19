@@ -1,0 +1,17 @@
+= render 'layouts/header'
+.mypage-top
+  .mypage-main
+    .side-profile
+      .side-profile__avatar
+      .side-profile__name
+      .side-profile__customer-edit
+        = link_to "個人情報内容変更", user_path(current_user.id), method: :GET
+      .side-profile__card-edit
+        = link_to "クレジットカード変更", user_path(current_user.id), method: :GET
+      %a.side-profile__logout
+        = link_to "ログアウト", destroy_user_session_path, method: :DELETE
+    .nav
+      %a.nav-item.nav__favorite
+        = link_to "お気に入り一覧", user_path(current_user.id), method: :GET
+      %a.nav-item.nav__purchase-history
+        = link_to "購入履歴", user_path(current_user.id), method: :GET
