@@ -1,17 +1,59 @@
 = render 'layouts/header'
 .mypage-top
   .mypage-main
-    .side-profile
-      .side-profile__avatar
-      .side-profile__name
-      .side-profile__customer-edit
+    .side-profiles
+      .mypage-avatar
+        .side-profiles__avatar.side-profile
+          = image_tag "avatar.svg", class: "avatar-img"
+        .side-profiles__name.side-profile
+          = @user.email
+      %a.side-profiles__customer-edit.side-profile
         = link_to "個人情報内容変更", user_path(current_user.id), method: :GET
-      .side-profile__card-edit
+      %a.side-profiles__card-edit.side-profile
         = link_to "クレジットカード変更", user_path(current_user.id), method: :GET
-      %a.side-profile__logout
+      %a.side-profiles__logout.side-profile
         = link_to "ログアウト", destroy_user_session_path, method: :DELETE
-    .nav
-      %a.nav-item.nav__favorite
-        = link_to "お気に入り一覧", user_path(current_user.id), method: :GET
-      %a.nav-item.nav__purchase-history
-        = link_to "購入履歴", user_path(current_user.id), method: :GET
+    .tabs
+      %input#tab1.tabs-item{type:"radio", name: "tab_btn", checked: "checked"}
+      %input#tab2.tabs-item{type:"radio", name: "tab_btn"}
+      .tab_area
+        %label.tab1_label{for: "tab1"} お気に入り一覧
+        %label.tab2_label{for: "tab2"} 購入履歴
+      .panel_area
+        %ul.tab_panel#panel1
+          - if @favorite.present?
+            - @favorite.each do |favorite|
+              = link_to product_path(favorite.product) do
+                %li.mypage-link
+                  .mypage-link__image
+                    = image_tag favorite.product.image.to_s, class: "mypage-link__img-box"
+                  .mypage-link__body
+                    .mypage-link__title
+                      = favorite.product.title
+                    .mypage-link__price
+                      = "￥" + favorite.product.price.to_s
+                    %p.mypage-link__tax (税込)
+                  / .mypage-favorite-heart
+                  /   - if current_user.favorites.find_by(user_id: current_user.id, product_id: favorite.product.id)
+                  /     = link_to product_favorites_path(product_id: favorite.product.id), id: "mypage-favorite-button", remote: true do
+                  /       %span.fa.fa-heart.fa-2x.favorite-red-btn-index#remote-button
+                  /   - else
+                  /     = link_to product_favorite_path(id: current_user.id, product_id: favorite.product.id), id: "mypage-favorite-button", remote: true do
+                  /       %span.fa.fa-heart.fa-2xfavorite-btn-index#remote-button
+          - else
+            .mypage-favorite-not-found お気に入りがありません
+        %ul.tab_panel#panel2
+          - if @favorite.present?
+            - @favorite.each do |favorite|
+              = link_to product_path(favorite.product) do
+                %li.mypage-link
+                  .mypage-link__image
+                    = image_tag favorite.product.image.to_s, class: "mypage-link__img-box"
+                  .mypage-link__body
+                    .mypage-link__title
+                      = favorite.product.title
+                    .mypage-link__price
+                      = "￥" + favorite.product.price.to_s
+                    %p.mypage-link__tax (税込)
+          - else
+            .mypage-item-not-found 購入履歴がありません
