@@ -1,0 +1,48 @@
+console.log(2)
+$(document).on('turbolinks:load', function() {
+  $("#favorite-buttons").html("<%= j(render partial: 'favorites/favorite', locals: { products: @products, favorites: @favorites, favorite: @favorite}) %>")
+});
+
+// $(document).on('turbolinks:load', function() {
+//   var $redHeart = $(".favorite-red-btn-index")
+//   var $heart = $(".favorite-btn-index")
+//   var $favoriteSum = $(".facorite-count")
+//   var $id = $("#favorite-button").val
+//   $("#favorite-button").on("click", function(e){
+//     e.preventDefault();
+//     favorite_function($id, $(this), $heart, $redHeart, $favoriteSum)
+//   });
+//   function favorite_function(id, button, heart, redHeart, sum) {
+//     if (button.hasClass("decrement")){
+//       $.ajax({
+//         type: 'DELETE',
+//         url: '/products/#{id}/favorites/:id',
+//         data: {product_id: id,
+//         dataType: 'json'}
+//       })
+//       .done(function(data){
+//         button.removeClass("decrement").addClass("increment")
+//         redHeart.replaceWith(heart)
+//         sum.text()
+//       })
+//       .fail(function(data){
+//         alert('お気に入り解除に失敗しました')
+//       })
+//     }else{
+//        $.ajax({
+//         type: 'POST',
+//         url: '/products/#{id}/favorites',
+//         data: {product_id: id,
+//         dataType: 'json'}
+//       })
+//       .done(function(data){
+//         button.removeClass("increment").addClass("decrement")
+//         heart.replaceWith(redHeart)
+//         sum.text()
+//       })
+//       .fail(function(data){
+//         alert('お気に入り登録に失敗しました')
+//       })
+//     }
+//   }
+// });

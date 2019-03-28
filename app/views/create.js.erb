@@ -1,1 +1,4 @@
-$("#favorite-button").html("<%= j(render partial: 'favorite', locals: { products: @products, favorites: @favorites, favorite: @favorite}) %>")
+console.log(2)
+$(document).on('turbolinks:load', function() {
+  $("#favorite-buttons").html("<%= j(render partial: 'favorites/favorite', locals: { products: @products, favorites: @favorites, favorite: @favorite}) %>")
+});

@@ -1,6 +1,7 @@
 .product-detail {
   width: 800px;
   margin: 150px auto;
+  position: relative;
   &__image {
     float: left;
     max-width: 400px;
@@ -51,6 +52,9 @@
       .product-order-button:hover {
         box-shadow: none;
       }
+    }
+    .product-favorite {
+      position: relative;
     }
     .product-detail-introduce {
       border-top: 2px dotted #696969;
