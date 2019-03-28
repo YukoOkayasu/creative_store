@@ -1,0 +1,10 @@
+= render 'layouts/header'
+.main
+  .category-search-result
+    %p.search-result_main_text
+      -if @products[0].present?
+        = @products[0].category.name + "  の商品一覧"
+      - else
+        条件に合致したアイテムは見つかりません
+  .products
+    = render "layouts/products"

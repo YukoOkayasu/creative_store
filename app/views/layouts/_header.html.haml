@@ -8,18 +8,23 @@
             = link_to root_path do
               %p HOME
           %li
-            %a NEWS
+            = link_to news_users_path do
+              %p NEWS
           %li
-            %a ABOUT
+            = link_to about_users_path do
+              %p ABOUT
           %li.catedory
             %a CATEGORY
             %ul.menu-category
               %li
-                %a POP
+                = link_to category_products_path(id: 1) do
+                  %p POP
               %li
-                %a CLASSICAL
+                = link_to category_products_path(id: 2) do
+                  %p CLASSICAL
               %li
-                %a MODERN
+                = link_to category_products_path(id: 3) do
+                  %p MODERN
     %li.header__search
       = form_tag('/products/search', method: :get, class: "search-form") do
         %input.input-search{name: "keyword", placeholder: "キーワードから探す", type: "text", value: ""}

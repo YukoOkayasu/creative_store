@@ -1,0 +1,86 @@
+.product-detail {
+  width: 800px;
+  margin: 150px auto;
+  position: relative;
+  &__image {
+    float: left;
+    max-width: 400px;
+    max-height: 400px;
+    display: inline-block;
+    .product-detail-image {
+      width: 400px;
+      height: 400px;
+      object-fit: contain;
+    }
+  }
+  &__body {
+    float: left;
+    display: inline-block;
+    margin-left: 50px;
+    color: #696969;
+    width: 320px;
+    .product-category{
+      font-size: 15px;
+      margin-bottom: 5px;
+      .product-category-link {
+        color: #696969;
+      }
+    }
+    .product-detail-title {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+    .product-detail-num {
+      .product-detail-price {
+        font-weight: bold;
+        font-size: 30px;
+      }
+    }
+    .product-order {
+      margin: 20px 0;
+      .product-order-button {
+        width: 215px;
+        height: 70px;
+        background-color: #FF0033;
+        font-size: 20px;
+        border-radius: 5px;
+        box-shadow: -2px -2px 3px #B22222 inset;
+        cursor: pointer;
+        border: none;
+        outline-style: none;
+      }
+      .product-order-button:hover {
+        box-shadow: none;
+      }
+    }
+    .product-favorite {
+      position: relative;
+    }
+    .product-detail-introduce {
+      border-top: 2px dotted #696969;
+      margin-top: 50px;
+      padding-top: 10px;
+    }
+  }
+}
+#details-favorite-button {
+  text-decoration: none;
+  border: 2px solid #696969;
+  background-color: white;
+  border-radius: 5px;
+  padding: 12px 8px;
+  box-shadow: 2px 2px 4px silver ;
+  .favorite-done,
+  .favorite-do {
+    color: #696969;
+  }
+}
+#details-favorite-button:hover {
+  box-shadow: none;
+}
+#details-favorite-button:hover .favorite-btn-index {
+  color: #FF0461;
+}
+#details-favorite-button:hover .favorite-red-btn-index {
+  color: #FF69A3;
+}

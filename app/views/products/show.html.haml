@@ -1,0 +1,26 @@
+= render 'layouts/header'
+.product-detail
+  .product-detail__image
+    = image_tag @product.image.to_s, class: "product-detail-image"
+  .product-detail__body
+    .product-category
+      = link_to root_path, class:"product-category-link" do
+        = "カテゴリー： " + @product.category.name
+    .product-detail-title
+      = @product.title
+    .product-detail-num
+      .product-detail-price
+        = "￥" + @product.price.to_s
+      %P.product-detail-tax (税込)
+    .product-order
+      / = button_to controller: 'card', action: 'buy_confirm', id: params[:id] do
+      = button_to root_path,class: "product-order-button"  do
+        %p{style: "color: white;"} カートに入れる
+    .product-favorite#favorite-buttons
+      - if current_user.favorites.find_by(user_id: current_user.id, product_id: @product.id)
+        = "お気に入りを解除する "
+      - else
+        = "お気に入りを登録する "
+      = render partial: "favorites/favorite", locals: { product: @product }
+    .product-detail-introduce
+      = @product.introduce

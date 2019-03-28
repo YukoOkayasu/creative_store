@@ -1,0 +1,129 @@
+.mypage-top {
+  height: 100vh;
+  width: 100vw;
+  .mypage-main {
+    width: 1020px;
+    height: 100%;
+    margin: 100px auto;
+    color: #696969;
+    text-decoration: none;
+    .side-profiles {
+      float: left;
+      width: 280px;
+      box-shadow: 0 0 8px gray;
+      border-radius: 10px;
+      padding: 25px 15px;
+      text-align: center;
+      .mypage-avatar {
+        border-bottom: 2px solid #DCDCDC;
+        .avatar-img {
+          margin: 0 auto 10px;
+          height: 200px;
+          width: 200px;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: #696969;
+      }
+      .side-profile {
+        margin: 15px auto;
+        display: block;
+      }
+    }
+    .tabs {
+      margin: auto;
+      float: right;
+      text-align: center;
+      width: 650px;
+      input[type="radio"] {
+        display: none;
+      }
+      .tab_area {
+        label {
+          background: #DCDCDC;
+          width: 49.6%;
+          display: inline-block;
+          padding: 16px 0;
+          text-align: center;
+          font-size: 16px;
+          cursor: pointer;
+          transition: ease 0.2s opacity;
+          border-top-right-radius: 10px;
+          border-top-left-radius: 10px;
+        }
+        label:hover {
+          opacity: 0.8;
+        }
+      }
+      .panel_area {
+        background: #F5F5F5;
+        border-bottom-right-radius:10px;
+        border-bottom-left-radius:10px;
+        .tab_panel {
+          width: 100%;
+          padding: 10px 0;
+          display: none;
+          font-size: 14px;
+          letter-spacing: 1px;
+          text-align: center;
+          list-style: none;
+          .mypage-link {
+            text-decoration: none;
+            border-bottom: 1px solid #DCDCDC;
+            height: 60px;
+            padding: 15px 30px;
+            position: relative;
+            transform: none;
+            &__image {
+              float: left;
+              .mypage-link__img-box {
+                width: 60px;
+                height: 60px;
+              }
+            }
+            &__body {
+              float: left;
+              padding-left: 25px;
+              color: #696969;
+              .mypage-link__price {
+                font-size: 16px;
+              }
+            }
+            // .mypage-favorite-heart {
+            //   margin: auto 0;
+            //   position: absolute;
+            //   bottom: 15px;
+            //   right: 30px;
+            //   #mypage-favorite-button {
+            //     padding: 2px 4px;
+            //   }
+            // }
+            // .mypage-favorite-heart:hover .favorite-red-btn-index  {
+            //   color: #696969;
+            // }
+          }
+          .mypage-link:hover {
+            opacity: 0.7;
+
+          }
+        }
+        .mypage-favorite-not-found,
+        .mypage-item-not-found {
+          font-size: 18px;
+          color: #ccc;
+          font-weight: bold;
+          padding-top: 170px;
+        }
+      }
+    }
+  }
+}
+#tab1:checked ~ .tab_area .tab1_label,
+#tab2:checked ~ .tab_area .tab2_label {
+  background: #F5F5F5;
+}
+#tab1:checked ~ .panel_area #panel1,
+#tab2:checked ~ .panel_area #panel2 {
+  display: block;
+}

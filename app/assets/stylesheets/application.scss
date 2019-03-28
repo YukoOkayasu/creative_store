@@ -1,12 +1,18 @@
 @import "reset";
 @import "font-awesome";
+@import "jquery.bxslider";
+
 @import "header";
 @import "products/index";
-@import "jquery.bxslider";
+@import "products/show";
+@import "products/category";
 @import "users/show";
+@import "users/about&news";
 
 @import "device/sessions";
 
 body {
   font-family: 'Lato', 'Noto Sans JP', '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  height: 100%;
+  width: 100%;
 }

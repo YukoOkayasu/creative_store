@@ -6,30 +6,29 @@
     %p.heading BEST
     .items-box
       %ul.bxslider
-        = @products.each do |product|
-          %li
-          = link_to product_path(product) do
-            - if product.image?
+        - @products.each do |product|
+          %figure.items-box__ranking
+            = link_to product_path(product) do
               = image_tag product.image.to_s, class: "product-image"
-            - else
-              画像が表示されません
+            .favorite-button-index#favorite-buttons
+              = render partial: "favorites/favorite", locals: { product: product }
   .products.new-products
     %p.heading NEW
     .items-box
       - @products.each do |product|
         %section.items-box__contents
-          %a{href: "/products/#{product.id}"}
-            %figure.items-box__photo
+          %figure.items-box__photo
+            = link_to product_path(product) do
               = image_tag product.image.to_s, class: "product-image"
-            .items-box__body
-              .items-box__name
-                = product.title
-              .items-box__num
-                .items-box__price
-                  = product.price
-                .iine-wrapper
-                  %span.fa.fa-heart.like-btn-index
-                    %span.iinemaenum
-                      // = Favorite.where(product_id: product.id).count
-                %p.items-box__tax (税込)
+            .favorite-button-index#favorite-buttons
+              = render partial: "favorites/favorite", locals: { product: product }
+          .items-box__body
+            .items-box__name
+              = product.title
+            .items-box__num
+              .items-box__price
+                = "￥" + product.price.to_s
+              %p.items-box__tax (税込)
       .view-all
+
+
