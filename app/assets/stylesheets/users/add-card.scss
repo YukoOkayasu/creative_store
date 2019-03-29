@@ -1,0 +1,39 @@
+.tabs {
+  .right-contents {
+    .l-chapter-sub-head {
+      font-size: 20px;
+      padding-bottom: 15px;
+      margin: 25px 0 10px;
+      text-align: center;
+      border-bottom: 1px solid;
+    }
+    .settings-add-card {
+      text-align: center;
+
+      .settings-payment-list {
+        margin-top: 10px;
+        .card-delete-button {
+          width: 40%;
+          height: 30px;
+          color: white;
+          background-color: #3366FF;
+          margin: 20px 0;
+          font-size: 13px;
+          border-radius: 3px;
+          box-shadow: -2px -2px 3px #336699 inset;
+          cursor: pointer;
+          border: none;
+          outline-style: none;
+        }
+        .card-delete-button:hover {
+          box-shadow: none;
+        }
+      }
+      .fa-credit-card {
+        font-size: 15px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,12 +1,12 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv":"Content-Type"}
     %title Creative
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{type:"text/javascript", src: "/views/create.js.erb"}
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     %link{href: "https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700", rel: "stylesheet"}
   %body
     = yield

@@ -90,6 +90,11 @@
                 font-size: 16px;
               }
             }
+            .fa-chevron-right {
+              float: right;
+              color: #696969;
+              margin: 15px;
+            }
             // .mypage-favorite-heart {
             //   margin: auto 0;
             //   position: absolute;
@@ -105,7 +110,9 @@
           }
           .mypage-link:hover {
             opacity: 0.7;
-
+          }
+          .mypage-link:hover .fa-chevron-right {
+            margin: 15px 10px 15px;
           }
         }
         .mypage-favorite-not-found,
@@ -113,7 +120,7 @@
           font-size: 18px;
           color: #ccc;
           font-weight: bold;
-          padding-top: 170px;
+          padding: 100px 0;
         }
       }
     }
