@@ -41,7 +41,7 @@
       .product-order-button {
         width: 215px;
         height: 70px;
-        background-color: #FF0033;
+        background-color: #FF4F50;
         font-size: 20px;
         border-radius: 5px;
         box-shadow: -2px -2px 3px #B22222 inset;
@@ -63,24 +63,24 @@
     }
   }
 }
-#details-favorite-button {
-  text-decoration: none;
-  border: 2px solid #696969;
-  background-color: white;
-  border-radius: 5px;
-  padding: 12px 8px;
-  box-shadow: 2px 2px 4px silver ;
-  .favorite-done,
-  .favorite-do {
-    color: #696969;
-  }
-}
-#details-favorite-button:hover {
-  box-shadow: none;
-}
-#details-favorite-button:hover .favorite-btn-index {
-  color: #FF0461;
-}
-#details-favorite-button:hover .favorite-red-btn-index {
-  color: #FF69A3;
-}
+// #details-favorite-button {
+//   text-decoration: none;
+//   border: 2px solid #696969;
+//   background-color: white;
+//   border-radius: 5px;
+//   padding: 12px 8px;
+//   box-shadow: 2px 2px 4px silver ;
+//   .favorite-done,
+//   .favorite-do {
+//     color: #696969;
+//   }
+// }
+// #details-favorite-button:hover {
+//   box-shadow: none;
+// }
+// #details-favorite-button:hover .favorite-btn-index {
+//   color: #FF0461;
+// }
+// #details-favorite-button:hover .favorite-red-btn-index {
+//   color: #FF69A3;
+// }

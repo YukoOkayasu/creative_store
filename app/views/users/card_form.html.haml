@@ -1,0 +1,67 @@
+= render 'layouts/header'
+
+.mypage-top
+  .mypage-main
+    = render 'users/mypage_sidebar'
+    .tabs
+      = form_tag("/users/card_form", method: "PATCH", id: "charge-form") do
+        .right-contents
+          %p.l-chapter-head クレジットカード情報入力
+          %label.card-info カード番号
+          %span.form-require 必須
+          %input#payment_card_no.input-default{"data-input-type":"card", maxlength: "19", placeholder: "半角数字のみ", type: "text", name: "number"}
+          %ul#card-no-error-wrapper.has-error-text
+          %ul.signup-card-list
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3708647559", width: "49"}
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3708647559", width: "34"}
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?3708647559", width: "30"}
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?3708647559", width: "32"}
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?3708647559", width: "21"}
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?3708647559", width: "32"}
+            %li
+              %img{alt: "", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?3708647559", width: "32"}
+          .form-group.signup-form-expire
+            %label.card-info 有効期限
+            %span.form-require 必須
+            %br
+            .select-wrap
+              %select#payment_card_expire_mm.select-default{name: "exp_month"}
+                %option{value: "01"} 01
+                %option{value: "02"} 02
+                %option{value: "03"} 03
+                %option{value: "04"} 04
+                %option{value: "05"} 05
+                %option{value: "06"} 06
+                %option{value: "07"} 07
+                %option{value: "08"} 08
+                %option{value: "09"} 09
+                %option{value: "10"} 10
+                %option{value: "11"} 11
+                %option{value: "12"} 12
+              %span 月
+            .select-wrap
+              %select#payment_card_expire_yy.select-default{name: "exp_year"}
+                %option{value: "2019"} 2019
+                %option{value: "2020"} 2020
+                %option{value: "2021"} 2021
+                %option{value: "2022"} 2022
+                %option{value: "2023"} 2023
+                %option{value: "2024"} 2024
+                %option{value: "2025"} 2025
+                %option{value: "2026"} 2026
+                %option{value: "2027"} 2027
+                %option{value: "2208"} 2028
+                %option{value: "2029"} 2029
+              %span 年
+          .form-group.signup-form-expire
+            %label.card-info セキュリティコード
+            %span.form-require 必須
+            %input#payment_card_security_code.input-default{placeholder: "カード背面4桁もしくは3桁の番号", type: "number", }
+            %input.payjp-token{ type: "hidden", name: "payjp_token", value: "" }
+          %button#submit-button{type: "submit"} 追加する
