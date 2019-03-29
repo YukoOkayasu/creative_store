@@ -1,0 +1,49 @@
+.right-contents {
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+  .l-chapter-head {
+    font-size: 25px;
+    margin-bottom: 25px 0;
+    font-weight: bold;
+    text-align: center;
+  }
+  .card-info {
+    margin: 25px 0 10px;
+  }
+  .form-require {
+    color: #FF0066;
+  }
+  .signup-card-list {
+    margin-top: 5px;
+    li {
+      display: inline-block;
+    }
+  }
+  .select-wrap {
+    margin-top: 5px;
+    .select-default {
+      height: 50px;
+      width: 50%;
+      background-color: white;
+      appearance: none;
+      outline-style: none;
+    }
+  }
+  #submit-button {
+    width: 100%;
+    height: 50px;
+    color: white;
+    background-color: #FF4F50;
+    margin: 40px 0;
+    font-size: 17px;
+    border-radius: 5px;
+    box-shadow: -2px -2px 3px #B22222 inset;
+    cursor: pointer;
+    border: none;
+    outline-style: none;
+  }
+  #submit-button:hover {
+    box-shadow: none;
+  }
+}

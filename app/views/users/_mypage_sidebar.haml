@@ -1,0 +1,12 @@
+.side-profiles
+  .mypage-avatar
+    .side-profiles__avatar.side-profile
+      = image_tag "avatar.svg", class: "avatar-img"
+    .side-profiles__name.side-profile
+      = @user.email
+  %a.side-profiles__customer-edit.side-profile
+    = link_to "個人情報内容変更", user_path(current_user.id), method: :GET
+  %a.side-profiles__card-edit.side-profile
+    = link_to "クレジットカード変更", add_card_users_path, method: :GET
+  %a.side-profiles__logout.side-profile
+    = link_to "ログアウト", destroy_user_session_path, method: :DELETE
