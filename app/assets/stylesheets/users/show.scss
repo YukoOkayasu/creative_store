@@ -17,18 +17,27 @@
       .mypage-avatar {
         border-bottom: 2px solid #DCDCDC;
         .avatar-img {
-          margin: 0 auto 10px;
+          margin: auto;
           height: 200px;
           width: 200px;
+          border-radius: 100px;
         }
       }
-      a {
+      .side-profiles__name {
+        margin: 15px auto;
+        font-size: 18px;
+      }
+      #side-profile {
+        margin: 10px auto;
+        display: block;
+        border-radius: 5px;
         text-decoration: none;
         color: #696969;
+        height: 40px;
+        line-height: 40px;
       }
-      .side-profile {
-        margin: 15px auto;
-        display: block;
+      #side-profile:hover {
+        background-color: #efefef;
       }
     }
     .tabs {

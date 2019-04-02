@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -31,7 +32,17 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
+      t.string :users, :nickname, null: false
+      t.string :users, :first_name, null: false
+      t.string :users, :last_name, null: false
+      t.string :users, :kana_first_name, null: false
+      t.string :users, :kana_last_name, null: false
+      t.integer :users, :telphone_number, null: false, unique: true
+      t.integer :users, :postal_code, null: false
+      t.integer :users, :area_id, null: false, foreign_key: true
+      t.string :users, :city_name, null: false
+      t.string :users, :city_number, null: false
+      t.string :users, :building
 
       t.timestamps null: false
     end

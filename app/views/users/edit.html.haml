@@ -1,0 +1,20 @@
+= render 'layouts/header'
+
+.mypage-top
+  .mypage-main
+    = render 'users/mypage_sidebar'
+    .tabs
+      .right-contents
+        %p.l-chapter-head プロフィール設定
+        .profile-image
+          = form_for @user do |f|
+            .profile-image-form
+              = f.label :image, class: 'form__mask__image', id: 'myImage' do
+                %img.preview
+                = f.file_field :image, class: 'hidden'
+            .field
+              = f.label :ニックネーム
+              %br/
+              = f.text_field :nickname, class: "input-default", placeholder: "例) アート太郎", type: "text", required: true
+            .actions
+            = f.submit 'プロフィール編集', class: 'form__submit'

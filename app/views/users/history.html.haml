@@ -3,8 +3,8 @@
   .mypage-main
     = render 'users/mypage_sidebar'
     .tabs
-      %input#tab1.tabs-item{type:"radio", name: "tab_btn", checked: "checked"}
-      %input#tab2.tabs-item{type:"radio", name: "tab_btn"}
+      %input#tab1.tabs-item{type:"radio", name: "tab_btn"}
+      %input#tab2.tabs-item{type:"radio", name: "tab_btn", checked: "checked"}
       .tab_area
         %label.tab1_label{for: "tab1"} お気に入り一覧
         %label.tab2_label{for: "tab2"} 購入履歴
@@ -41,3 +41,4 @@
                   .fa.fa-chevron-right
           - else
             .mypage-item-not-found 購入履歴がありません
+
