@@ -1,0 +1,10 @@
+- if notice
+  %input#close{type:"checkbox", name:"close"}
+  .flash.flash__notice
+    = notice
+    %label.btn{"data-dismiss":"alert", type:"button", for:"close"} &times;
+- elsif alert
+  %input#close{type:"checkbox", name:"close"}
+  .flash.flash__alert
+    = alert
+    %label.btn{"data-dismiss":"alert", type:"button", for:"close"} &times;

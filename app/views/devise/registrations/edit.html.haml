@@ -1,0 +1,40 @@
+= render 'layouts/header'
+
+.mypage-top
+  .mypage-main
+    = render 'users/mypage_sidebar'
+    .tabs
+      .right-contents
+        %p.l-chapter-head メールアドレス・パスワードの変更
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .field
+            = f.label :メールアドレス
+            %br/
+            = f.email_field :email, autocomplete: "email", class: "input-default", required: true
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .field
+            = f.label :新しいパスワード
+            %i (変更しない場合は空欄)
+            %br/
+            = f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上の英数字"
+            - if @minimum_password_length
+              %br/
+          .field
+            = f.label :新しいパスワードの確認
+            %br/
+            = f.password_field :password_confirmation, placeholder: "#{@minimum_password_length}文字以上の英数字"
+            %br/
+          .field
+            = f.label :現在のパスワード
+            %em{style:"color:#FF0066;"} (確認のため入力してください)
+            %br/
+            = f.password_field :current_password, required: true
+          .actions
+            = f.submit "内容編集"
+        / %h3 Cancel my account
+        / %p
+        /   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+        / = link_to "戻る", :back

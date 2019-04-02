@@ -1,0 +1,45 @@
+= render 'layouts/header'
+
+.mypage-top
+  .mypage-main
+    = render 'users/mypage_sidebar'
+    .tabs
+      .right-contents
+        %p.l-chapter-head 本人情報内容変更
+        = form_for @user do |f|
+          .field
+            = f.label :お名前
+            %br/
+            = f.text_field :first_name, class: "input-default", placeholder: "例) 山田", type: "text", required: true
+            = f.text_field :last_name, class: "input-default", placeholder: "例) 彩", type: "text", required: true
+          .field
+            = f.label :お名前カナ
+            %br/
+            = f.text_field :kana_first_name, class: "input-default", placeholder: "例) ヤマダ", type: "text", pattern: "[ァ-ヴー\\s]+", required: true
+            = f.text_field :kana_last_name, class: "input-default", placeholder: "例) アヤ", type: "text", pattern: "[ァ-ヴー\\s]+", required: true
+          .field
+            = f.label :郵便番号
+            %br/
+            = f.text_field :postal_code, class: "input-default", placeholder: "例) 123-4567", type: "text", required: true
+          .field
+            = f.label :都道府県
+            %br/
+            = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "input-default", required: true
+          .field
+            = f.label :市区町村
+            %br/
+            = f.text_field :city_name, class: "input-default", placeholder: "例) 渋谷区", type: "text", required: true
+          .field
+            = f.label :番地
+            %br/
+            = f.text_field :city_number, class: "input-default", placeholder: "例) 青山1-1-1", type: "text", required: true
+          .field
+            = f.label :建物名
+            %br/
+            = f.text_field :building, class: "input-default", placeholder: "例) アートビル", type: "text"
+          .field
+            = f.label :携帯電話の番号
+            %br/
+            = f.text_field :telphone_number, class: "input-default", placeholder: "携帯電話の番号を入力", type: "text", required: true
+          .actions
+            = f.submit '本人情報内容編集', class: 'form__submit'

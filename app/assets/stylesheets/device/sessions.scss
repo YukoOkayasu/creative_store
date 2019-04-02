@@ -1,11 +1,12 @@
 .session {
   width: 100%;
-  height: 100vh;
-  text-align: center;
+  height: 100%;
+  min-height: 100vh;
   background-color: #D3D3D3;
   color: #696969;
   padding: 20px 0;
   h2 {
+    text-align: center;
     font-size: 30px;
   }
   .session-box {
@@ -13,8 +14,11 @@
     background-color: white;
     margin: 10px auto 40px;
     width: 500px;
-    text-align: center;
     border-radius: 4px;
+    a {
+      text-align: center;
+      color: #696969;
+    }
     .field {
       width: 100%;
       padding: 9px 32px 9px 8px;
@@ -27,6 +31,8 @@
   }
 }
 
+
+
 form {
   input,textarea {
     width: 100%;
@@ -36,21 +42,62 @@ form {
     height: 50px;
     outline: 0;
     padding-left: 5px;
+    margin: 10px 0 10px;
+    background-color: white;
+  }
+  select {
+    width: 50%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 50px;
+    outline: 0;
+    padding-left: 5px;
+    margin: 10px 0 10px;
   }
   input[type="checkbox"], label {
     display: inline-block;
+    height: auto;
+    width: auto;
+  }
+  .field {
+    margin-top: 15px;
+    font-size: 17px;
   }
   input[type="submit"] {
     transition: all .2s ease;
-    background-color: silver;
-    border-radius: 20px;
+    background-color: #66CCCC;
+    border-radius: 5px;
     color: #fff;
     border: 0;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     cursor: pointer;
+    margin-top: 20px;
+    box-shadow: -2px -2px 3px #669999 inset;
     &:hover {
-      background-color: gray;
+      box-shadow: none;
+    }
+  }
+}
+.profile-image-form {
+  border-bottom: 1px solid #696969;
+  margin-bottom: 40px;
+  text-align: center;
+  .form__mask__image{
+    cursor: pointer;
+    margin: auto;
+    .preview {
+      object-fit: contain;
+      width: 200px;
+      height: 200px;
+      border: 1px dotted #696969;
+      border-radius: 100px;
+    }
+    .hidden {
+      border: none;
+      height: auto;
+      width: 260px;
     }
   }
 }

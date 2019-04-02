@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
     @favorite.save
     @favorites = Favorite.where(product_id: params[:product_id])
     @products = Product.all
-    # redirect_to :back
+    redirect_to :back
   end
 
   def destroy
@@ -12,6 +12,6 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     @favorites = Favorite.where(product_id: params[:product_id])
     @products = Product.all
-    # redirect_to :back
+    redirect_to :back
   end
 end

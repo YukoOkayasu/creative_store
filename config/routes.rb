@@ -9,12 +9,14 @@ Rails.application.routes.draw do
       patch 'buy_confirm'
     end
   end
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     collection do
+      get 'history'
       get 'about'
       get 'news'
       get 'add_card'
       get 'card_form'
+      get 'edit_user'
       patch 'card_form' => 'users#card_save'
       delete 'card_form/:id' => 'users#card_delete'
     end

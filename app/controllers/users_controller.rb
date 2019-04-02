@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
+before_action :user_default, :authenticate_user!, except:[:about, :news]
 protect_from_forgery except: [:card_form, :card_save,:card_delete, :add_card]
 
   def show
-    @user = User.find(current_user.id)
     @favorite = Favorite.where(user_id: current_user.id)
   end
 
@@ -14,7 +13,6 @@ protect_from_forgery except: [:card_form, :card_save,:card_delete, :add_card]
   end
 
   def card_form
-    @user = User.find(current_user.id)
   end
 
   def card_save
@@ -26,20 +24,51 @@ protect_from_forgery except: [:card_form, :card_save,:card_delete, :add_card]
   end
 
   def card_delete
-    @users = User.find(current_user.id)
     Payjp.api_key = PAYJP_SECRET_KEY
-    customer = Payjp::Customer.retrieve(@users.customer_id)
+    customer = Payjp::Customer.retrieve(@user.customer_id)
     customer.delete
-    @users.update_attributes(token_id: nil, customer_id: nil)
+    @user.update_attributes(token_id: nil, customer_id: nil)
     redirect_to :back
   end
 
   def add_card
-    @user = User.find(current_user.id)
     @token = @user.token_id
     Payjp.api_key = PAYJP_SECRET_KEY
     if @token.present?
       @cards = Payjp::Token.retrieve(@token)
     end
   end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
+  end
+
+  def edit_user
+  end
+
+  def history
+    @favorite = Favorite.where(user_id: current_user.id)
+  end
+
+  private
+
+  def user_default
+    @user = User.find(current_user)
+  end
+
+  def user_params
+    params.require(:user).permit(:image, :nickname).merge(id: current_user.id)
+  end
+
+  def read
+    @tempfile.read
+  end
+
 end

@@ -1,0 +1,64 @@
+.session
+  %h2 Sign up
+  .session-box
+    = form_for(resource,  url: "/users", method: :post) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :ニックネーム
+        %br/
+        = f.text_field :nickname, class: "input-default", placeholder: "例) アート太郎", type: "text", required: true, autofocus: true
+      .field
+        = f.label :お名前
+        %br/
+        = f.text_field :first_name, class: "input-default", placeholder: "例) 山田", type: "text", required: true
+        = f.text_field :last_name, class: "input-default", placeholder: "例) 太郎", type: "text", required: true
+      .field
+        = f.label :お名前カナ
+        %br/
+        = f.text_field :kana_first_name, class: "input-default", placeholder: "例) ヤマダ", type: "text", pattern: "[ァ-ヴー\\s]+", required: true
+        = f.text_field :kana_last_name, class: "input-default", placeholder: "例) タロウ", type: "text", pattern: "[ァ-ヴー\\s]+", required: true
+      .field
+        = f.label :郵便番号
+        %br/
+        = f.text_field :postal_code, class: "entry-form", placeholder: "例) 123-4567", type: "text", required: true
+      .field
+        = f.label :都道府県
+        %br/
+        = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, required: true
+      .field
+        = f.label :市区町村
+        %br/
+        = f.text_field :city_name, class: "entry-form", placeholder: "例) 渋谷区", type: "text", required: true
+      .field
+        = f.label :番地
+        %br/
+        = f.text_field :city_number, class: "entry-form", placeholder: "例) 青山1-1-1", type: "text", required: true
+      .field
+        = f.label :建物名
+        %br/
+        = f.text_field :building, class: "entry-form", placeholder: "例) アートビル", type: "text"
+      .field
+        = f.label :メールアドレス
+        %br/
+        = f.email_field :email, autocomplete: "email", placeholder: "例) art@gmail.com", type: "text", required: true
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      .field
+        = f.label :携帯電話の番号
+        %br/
+        = f.text_field :telphone_number, class: "input-default signin-input", placeholder: "携帯電話の番号を入力", type: "text", required: true
+      .field
+        = f.label :パスワード
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} 文字以上の英数字)
+        %br/
+        = f.password_field :password, autocomplete: "new-password", required: true
+      .field
+        = f.label :パスワードの確認
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password", required: true
+      .actions
+        = f.submit "新規登録"
+    = render "devise/shared/links"

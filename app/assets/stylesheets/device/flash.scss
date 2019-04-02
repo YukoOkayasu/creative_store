@@ -1,0 +1,33 @@
+.flash {
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  height: 55px;
+  width: auto;
+  margin: 5px;
+  text-align: center;
+  border-radius: 10px;
+  line-height: 55px;
+  .btn {
+    cursor: pointer;
+    font-size: 27px;
+    float: right;
+    margin-right: 30px;
+  }
+  &__alert{
+    background-color: #FF6347;
+  }
+  &__notice {
+    background-color: #00ffbf;
+  }
+}
+
+#close {
+  display: none;
+}
+#close:checked ~ .flash {
+  display: none;
+}
+#close:checked ~ .btn {
+  display: none;
+}
