@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-before_action :authenticate_user!, except: [:index, :category]
+  before_action :current_cart, :setup_cart_item!, :authenticate_user!, except: [:index, :category]
+  protect_from_forgery except:[:buy_confirm, :buy]
 
   def index
     @products = Product.all.order("created_at DESC")
@@ -10,6 +11,11 @@ before_action :authenticate_user!, except: [:index, :category]
   def show
     @product = Product.find(params[:id])
     @favorite = Favorite.where(user_id: current_user.id)
+    if current_cart.cart_items.find_by(product_id: params[:id]).blank?
+      @cart = current_cart.cart_items.new
+    else
+      @cart = current_cart.cart_items.find_by(product_id: params[:id])
+    end
   end
 
   def search
@@ -21,7 +27,8 @@ before_action :authenticate_user!, except: [:index, :category]
   end
 
   def buy_confirm
-    @product = Product.find(params[:id])
+    @total_price = get_total_price
+    @cart_items = current_cart.cart_items
     @user = User.find(current_user.id)
     @token = @user.token_id
     if @token.present?
@@ -31,15 +38,25 @@ before_action :authenticate_user!, except: [:index, :category]
   end
 
   def buy
-    @product = Product.find(params[:id])
     @user = User.find(current_user.id)
     Payjp.api_key = PAYJP_SECRET_KEY
     charge = Payjp::Charge.create(
-    amount: @product.price,
+    amount: get_total_price,
     customer: @user.customer_id,
     currency: 'jpy',
     )
-    @product.update(product_state_id: 2)
-    redirect_to user_path
+    current_cart.update(cart_status: 2)
+    redirect_to user_path(current_user), notice: "商品を注文しました"
+
   end
+
+  def get_total_price
+    @cart_items = current_cart.cart_items
+    sum = 0
+    @cart_items.each do |cart|
+      sum += (cart.product.price * cart.quantity)
+    end
+    return sum
+  end
+
 end

@@ -9,7 +9,9 @@
   z-index: 9999;
   &__inner {
     height: 70px;
-    padding: 0 150px;
+    max-width: 1140px;
+    min-width: 550px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     line-height: 75px;
