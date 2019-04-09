@@ -5,7 +5,6 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :price, null: false
       t.integer :genre_id, null: false
       t.text :introduce, null: false
-      t.integer :stock, null: false
       t.timestamps
     end
   end

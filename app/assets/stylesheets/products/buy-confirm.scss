@@ -1,0 +1,119 @@
+.products_buyconfirm {
+  color: #696969;
+  height: 100%;
+  width: 100%;
+  .products_buyconfirm_content {
+    margin: 150px auto;
+    max-width: 750px;
+    height: auto;
+    text-align: center;
+    .buy-confirm {
+      font-size: 20px;
+      border-bottom: 2px solid silver;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+    }
+    .buyconfirm-change {
+      color: #FF0066;
+      text-decoration: none;
+      line-height: 40px;
+    }
+    .cart-main {
+      height: auto;
+      width: 100%;
+      .cart-items-main {
+        margin: 40px auto;
+        .cart-item-main {
+          height: 150px;
+          margin: 10px 20px;
+          border-bottom: 1px solid silver;
+          .cart-item {
+            height: 150px;
+            vertical-align: top;
+            &__icon {
+              width: 30%;
+              .cart-item-image {
+                width: 140px;
+                height: 140px;
+                object-fit: contain;
+              }
+            }
+            &__name {
+              font-size: 17px;
+              width: 30%;
+              position: relative;
+            }
+            &__price {
+              font-size: 16px;
+              color: silver;
+            }
+            &__sum {
+              font-size: 19px;
+              width: 35%;
+            }
+            li {
+              display: inline-block;
+              vertical-align: top;
+            }
+          }
+        }
+      }
+    }
+    .products_buyconfirm_total {
+      width: 100%;
+      height: 150px;
+      text-align: center;
+      font-size: 25px;
+      position: relative;
+      .products_buyconfirm_total_left {
+        width: 40%;
+        position: absolute;
+        bottom: 0;
+        right: 250px;
+      }
+      .products_buyconfirm_total_right {
+        position: absolute;
+        width: 40%;
+        bottom: 0;
+        right: 0;
+
+      }
+    }
+  }
+}
+.products_buyconfirm_buybtn {
+  float: right;
+  margin: 30px;
+  width: 200px;
+  height: auto;
+  font-size: 30px;
+  background-color: #FF0066;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow: -2px -2px 4px #840336 inset;
+  outline-style: none;
+}
+.products_buyconfirm_buybtn:hover {
+  box-shadow: none;
+  background-color: #ff5599;
+}
+.products_buyconfirm_buybtn_not {
+  float: right;
+  margin: 30px;
+  width: 200px;
+  height: auto;
+  font-size: 30px;
+  background-color: gray;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+}
+.products_buyconfirm_message {
+  margin: 10px;
+  color: #FF0066;
+}
+

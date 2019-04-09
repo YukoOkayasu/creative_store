@@ -33,8 +33,9 @@
     %li.header__titles Creative Art Store
     %li.header__right
       - if user_signed_in?
-        %a.bag{href: "/"}
-          %i.fa.fa-shopping-cart.fa-2x
+        %a.bag
+          = link_to cart_path(current_user.id), method: :GET do
+            %i.fa.fa-shopping-cart.fa-2x
         %a.mypage
           = link_to "My Page", user_path(current_user.id), method: :GET
       - else

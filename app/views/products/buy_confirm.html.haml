@@ -1,0 +1,84 @@
+= render 'layouts/header'
+
+.products_buyconfirm
+  .products_buyconfirm_content
+    %p.buy-confirm.bold 購入を確定しますか？
+
+    = form_tag("buy", method: "PATCH") do
+      %section.products_buyconfirm_address
+        .products_buyconfirm_address_box.solid
+          %p.sub-title.bold 配送先
+          %address
+            = "〒 #{@user.postal_code}"
+            %br
+              = @user.area_id
+              = @user.city_name
+              = @user.city_number
+              = @user.building
+            %br
+              = @user.nickname
+          %a.buyconfirm-change{href: edit_user_users_path}
+            %span 変更する &gt;
+      %section.products_buyconfirm_howbuy
+        .products_buyconfirm_howbuy_box.solid
+          %p.sub-title.bold 支払方法
+          %ul.settings-payment-list
+            %li
+            - if @token.present?
+              %figure
+              - if (@cards[:card][:brand] == "Visa")
+                %img{:alt => "Visa", :height => "15", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?4192743052", :width => "49"}/
+              - if (@cards[:card][:brand] == "MasterCard")
+                %img{:alt => "MasterCard", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3708647559", :width => "34"}
+              - if (@cards[:card][:brand] == "saison-card")
+                %img{:alt => "saison-card", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?3708647559", :width => "30"}/
+              - if (@cards[:card][:brand] == "JCB")
+                %img{:alt => "JCB", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?3708647559", :width => "32"}/
+              - if (@cards[:card][:brand] == "American Express")
+                %img{:alt => "American Express", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?3708647559", :width => "21"}/
+              - if (@cards[:card][:brand] == "Diners Club")
+                %img{:alt => "Diners Club", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?3708647559", :width => "32"}/
+              - if (@cards[:card][:brand] == "Discover")
+                %img{:alt => "Discover", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?3708647559", :width => "32"}/
+              .settings-payment-num
+                = ("***********" + @cards[:card][:last4])
+              .settings-payment-num
+                = "#{@cards[:card][:exp_month]}月 / #{@cards[:card][:exp_year]}年"
+          %p
+          %a.buyconfirm-change{href: add_card_users_path}
+            %span 変更する &gt
+      .cart-main
+        %p.sub-title.bold 商品
+        %ul.cart-items-main
+          - @cart_items.each do |cart|
+            %li.cart-item-main
+              %ul.cart-item
+                %li.cart-item__name
+                  = cart.product.title
+                %li.cart-item__icon
+                  = link_to product_path(cart.product) do
+                    = image_tag cart.product.image.to_s, class: "cart-item-image"
+                %li.cart-item__sum.bold
+                  = "￥" + (cart.product.price * cart.quantity).to_s
+                  .cart-item__price.br/
+                  = "( ￥ #{cart.product.price} × #{cart.quantity} )"
+      .products_buyconfirm_total
+        %p.sub-title.bold 注文概要
+        .products_buyconfirm_total_left
+          .buyconfirm-fee
+            = "配送料"
+          .buyconfirm-fee
+            = "支払い金額"
+        .products_buyconfirm_total_right.bold
+          .buyconfirm-fee
+            = "￥ 600"
+          .buyconfirm-fee
+            = "￥ #{@total_price + 600}"
+      - if (@token.present? && @user.area_id.present?)
+        %button.products_buyconfirm_buybtn{type: "submit"}
+          購入する
+      - else
+        %p.products_buyconfirm_message
+          配送先と支払方法の入力を完了してください
+        .products_buyconfirm_buybtn_not
+          購入する

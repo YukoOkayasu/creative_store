@@ -26,18 +26,18 @@
           - else
             .mypage-favorite-not-found お気に入りがありません
         %ul.tab_panel#panel2
-          - if @favorite.present?
-            - @favorite.each do |favorite|
-              = link_to product_path(favorite.product) do
-                %li.mypage-link
-                  .mypage-link__image
-                    = image_tag favorite.product.image.to_s, class: "mypage-link__img-box"
-                  .mypage-link__body
-                    .mypage-link__title
-                      = favorite.product.title
-                    .mypage-link__price
-                      = "￥" + favorite.product.price.to_s
-                    %p.mypage-link__tax (税込)
-                  .fa.fa-chevron-right
+          - if @cart.present?
+            - @cart.each do |cart|
+              %li.mypage-history-link
+                %ul.cart-items_image
+                  - cart.cart_items.each do |cart_item|
+                    %li.cart-item_image
+                      .mypage-history-link__image
+                        = link_to product_path(cart_item.product) do
+                          = image_tag cart_item.product.image.to_s, class: "mypage-link__img-box"
+                = link_to order_history_users_path(cart) do
+                  .mypage-history-link__day
+                    = "注文日：#{cart.updated_at.strftime("%Y年%m月%d日")}"
+                    .fa.fa-chevron-right
           - else
             .mypage-item-not-found 購入履歴がありません

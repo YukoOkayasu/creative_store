@@ -1,0 +1,38 @@
+= render 'layouts/header'
+
+.order_history
+  .order_history_content
+    .cart-main
+      %p.order_history_title.bold 注文履歴
+      .order-history_day
+        = "注文日：#{@cart.updated_at.strftime("%Y年%m月%d日")}"
+      %p.sub-title.bold 商品
+      %ul.cart-items-main
+        - @cart_items.each do |cart|
+          %li.cart-item-main
+            %ul.cart-item
+              %li.cart-item__name
+                = cart.product.title
+              %li.cart-item__icon
+                = link_to product_path(cart.product) do
+                  = image_tag cart.product.image.to_s, class: "cart-item-image"
+              %li.cart-item__sum.bold
+                = "￥" + (cart.product.price * cart.quantity).to_s
+                .cart-item__price.br/
+                = "( ￥ #{cart.product.price} × #{cart.quantity} )"
+    .order_history_total
+      %p.sub-title.bold 注文概要
+      .order_history_total_left
+        .order-fee
+          = "小計"
+        .order-fee
+          = "配送料"
+        .order-fee
+          = "支払い金額"
+      .order_history_total_right.bold
+        .order-fee
+          = "￥ #{@total_price}"
+        .order-fee
+          = "￥ 600"
+        .order-fee
+          = "￥ #{@total_price + 600}"

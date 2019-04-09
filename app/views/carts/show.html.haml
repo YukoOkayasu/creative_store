@@ -1,0 +1,56 @@
+= render 'layouts/header'
+.cart
+  .cart-box
+    - if @cart_items.present?
+      .cart-quantiity
+        = "カート内には #{@cart_items.length} 個の商品があります"
+      .cart-items-title
+        %ul.cart-items
+          %li.cart-items__name 商品(#{@cart_items.length})
+          %li.cart-items__quantity 数量
+          %li.cart-items__price 価格
+          %li.cart-items__sum 合計
+      .cart-main
+        %ul.cart-items-main
+          - @cart_items.each do |cart|
+            %li.cart-item-main
+              %ul.cart-item
+                %li.cart-item__icon
+                  = link_to product_path(cart.product) do
+                    = image_tag cart.product.image.to_s, class: "cart-item-image"
+                %li.cart-item__name
+                  = cart.product.title
+                  = form_tag delete_item_carts_path, method: :delete do
+                    %button.delete-cart-item{type: "submit",style: "color: #0066FF;", product_id: params[:product_id], style:"color:white;"} 削除
+                    = hidden_field_tag :product_id, cart.product.id
+                %li.cart-item__quantity
+                  = cart.quantity.to_s
+                %li.cart-item__price
+                  = "￥" + cart.product.price.to_s
+                %li.cart-item__sum
+                  = "￥" + (cart.product.price * cart.quantity).to_s
+        .cart-main__total
+          .cart-total
+            .cart-price
+              = "小計"
+            .cart-price
+              = "配送料"
+            .cart-price.bold
+              = "合計"
+          .cart-total-price
+            .cart-price
+              = "￥ #{@total_price}"
+            .cart-price
+              = "￥ 600"
+            .cart-price.bold
+              = "￥ #{@total_price + 600} "
+        %button#order-button
+          = link_to controller: 'products', action: 'buy_confirm' do
+            %p 購入画面に進む
+
+    - else
+      .no-cart
+        = image_tag "cart.svg" ,class: "cart-svg"
+        = "あなたのショッピングカートは空です"
+        .br/
+        = link_to "買い物を始める", root_path

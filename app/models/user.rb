@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :products, through: :favorites
+  has_many :carts
 
   mount_uploader :image, ImageUploader
 end
