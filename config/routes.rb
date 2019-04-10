@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     resources :favorites, only: [:create, :destroy]
     collection do
+      get 'search'
       get 'category'
       get 'buy_confirm'
       patch 'buy'

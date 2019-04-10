@@ -50,6 +50,8 @@ class ProductsController < ApplicationController
 
   end
 
+  private
+
   def get_total_price
     @cart_items = current_cart.cart_items
     sum = 0
