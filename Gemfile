@@ -40,7 +40,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
 end
 
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.13'
   gem 'haml-rails'
   gem 'erb2haml'
   gem 'font-awesome-rails'
