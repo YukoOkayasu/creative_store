@@ -5,7 +5,7 @@
     .cart-main
       %p.order_history_title.bold 注文履歴
       .order-history_day
-        = "注文日：#{@cart.updated_at.strftime("%Y年%m月%d日")}"
+        = "注文日：#{@cart.updated_at.strftime("%Y年%m月%d日 %H:%M")}"
       %p.sub-title.bold 商品
       %ul.cart-items-main
         - @cart_items.each do |cart|

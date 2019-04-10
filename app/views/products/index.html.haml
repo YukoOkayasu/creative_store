@@ -20,7 +20,7 @@
           %figure.items-box__photo
             = link_to product_path(product) do
               = image_tag product.image.to_s, class: "product-image"
-            .favorite-button-index{id: "favorite-buttons-#{product.id}"}
+            .favorite-button-index#favorite-buttons
               = render partial: "favorites/favorite", locals: { product: product }
           .items-box__body
             .items-box__name
