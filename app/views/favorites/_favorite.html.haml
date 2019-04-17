@@ -10,7 +10,7 @@
       %span.facorite-count#remote-button
         = Favorite.where(product_id: product.id).count
 - else
-  #favorite-button
+  .favorite-button
     %span.fa.fa-heart.favorite-btn-index
     %span.facorite-count
       = Favorite.where(product_id: product.id).count
